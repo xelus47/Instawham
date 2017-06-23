@@ -1,0 +1,6 @@
+#!/usr/bin/python2
+
+import sys,json,os
+
+if __name__=="__main__":
+	sys.stdout.write("Hello, world!\n")
