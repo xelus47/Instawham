@@ -6,7 +6,7 @@ sys.dont_write_bytecode = True
 
 
 def fetch(path="/"):
-	resp = wham_connect.get_response(path=path)
+	resp = wham_connect.get_response(path=path,host='www.instagram.com')
 	assert resp.status==200, "%s %s @ %s%s"%(resp.status,resp.reason,'www.instagram.com',path)
 	content_type = resp.getheader("content-type")
 	if not content_type=="application/json":
@@ -15,19 +15,16 @@ def fetch(path="/"):
 		data = json.loads(resp.read())
 		return data
 
-def graphql(qid,first,after,query_id=None):
+def graphql(obj,query_id=None):
+	""" access to /graphq/query/ """
+	assert type(obj) is dict, "fetch.graphql: obj must be a dict"
 	if query_id is None:
 		f=open("query_id",'r')
 		query_id=f.read()
 		f.close()
-	args = urllib.urlencode({
-		'query_id':query_id.split("\n")[0],
-		'id':qid,
-		'first':first,
-		'after':after
-		})
-	data = fetch("/graphql/query/?"+args)
-	return data
+	args = urllib.urlencode(obj)
+	#data = fetch("/graphql/query/?"+args)
+	return args
 
 def main(url=None):
 	if not sys.stdin.isatty() and url is None:
@@ -47,14 +44,14 @@ def main(url=None):
 
 	data = fetch(args.path)
 	if type(data) is dict:
-		print json.dumps(data,indent=2)
+		print json.dumps(data, indent=2, sort_keys=True)
 	else:
 		print data
 
 if __name__=="__main__":
-	#main()
+	main()
 	#graphql('60640649',first=12,after='1538433508471949457')
-	if not sys.stdin.isatty():
-		main()
-	else:
-		print graphql("60640649",first=12,after='1538433508471949457')
+	#if not sys.stdin.isatty():
+	#	main()
+	#else:
+	#	print graphql("60640649",first=12,after='1538433508471949457')

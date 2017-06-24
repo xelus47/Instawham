@@ -1,6 +1,11 @@
 #!/usr/bin/python2
 
 import sys,json,os
+#import instawham
+from instawham import *
+sys.dont_write_bytecode = True
 
 if __name__=="__main__":
-	sys.stdout.write("Hello, world!\n")
+	#print connect.connect('/bokado/','www.instagram.com')
+	print fetch.graphql({'first':1,'shortcode':'BVsHTuJg_89'})
+	#sys.stdout.write("Hello, world!\n")
