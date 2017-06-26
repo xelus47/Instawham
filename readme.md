@@ -20,10 +20,10 @@ TBA
 | page type | url | example |
 | --------- | --- | ------- | 
 | home | `/` | www.instagram.com |
-| user | `/[username]/` | /istaypuffed/ |
-| post | `/p/[short_code]/`| /p/BV0Jn0nFWpX/ |
-| hashtag | `/explore/tags/[hashtag]/`| /explore/tags/drugs/ |
-| location | `/explore/locations/[id]/([location]/)`| /explore/locations/44961364/ |
+| user | `/[username]/` | www.instagram.com/istaypuffed/ |
+| post | `/p/[short_code]/`| www.isntagram.com/p/BV0Jn0nFWpX/ |
+| hashtag | `/explore/tags/[hashtag]/`| www.instagram.com/explore/tags/drugs/ |
+| location | `/explore/locations/[id]/([location]/)`| www.instagram.com/explore/locations/44961364/ |
 
 NB: location name may be omitted:
 `/explore/locations/44961364/` is resolved by instagram.com as `/explore/locations/44961364/san-francisco-california/`
