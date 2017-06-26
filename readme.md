@@ -17,18 +17,18 @@ TBA
 
 ### General
 
-| page type | url |
-| --------- | --- |
-| home | `/` |
-| user | `/[username]/` |
-| post | `/p/[short_code]/`| 
-| hashtag | `/explore/tags/[hashtag]/`|
-| location | `/explore/locations/[id]/([location]/)` |
+| page type | url | example |
+| --------- | --- | ------- | 
+| home | `/` | www.instagram.com |
+| user | `/[username]/` | /istaypuffed/ |
+| post | `/p/[short_code]/`| /p/BV0Jn0nFWpX/ |
+| hashtag | `/explore/tags/[hashtag]/`| /explore/tags/drugs/ |
+| location | `/explore/locations/[id]/([location]/)`| /explore/locations/44961364/ |
 
 NB: location name may be omitted:
 `/explore/locations/44961364/` is resolved by instagram.com as `/explore/locations/44961364/san-francisco-california/`
 
-### `?__a=1`
+### ?__a=1
 TBA
 
 ### Graphql
@@ -39,11 +39,11 @@ The url takes a query string and returns a nice JSON file.
 #### Query string
 
 Required:
-| parameter  | variable type | usage
-| ---------- | ------------- | -----
-| query_id   | `int`         | Requesting the appropriate page type (location, hashtag, etc)
-| [category] | varied        | Pointing to the specific node
-| first      | `int`         | I only want to see the first `n` entries for this query
+| parameter  | variable type | usage |
+| ---------- | ------------- | ----- |
+| query_id   | `int`         | Requesting the appropriate page type (location, hashtag, etc) |
+| [category] | varied        | Pointing to the specific node                                 | 
+| first      | `int`         | I only want to see the first `n` entries for this query       |
 
 Optional:
 | Parameter | variable type | usage
