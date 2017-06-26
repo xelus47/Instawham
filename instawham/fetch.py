@@ -15,13 +15,39 @@ def fetch(path="/"):
 		data = json.loads(resp.read())
 		return data
 
-def graphql(obj,query_id=None):
+def graphql_success(s):
+	""" s -> bool """
+	""" returns True if it is parsed by json and is of acceptable format """
+	""" acceptable format: { "data" : { "category" (...) """
+	""" caveat: two types of queries use 'id', namely LOCATION and USER,
+	    so choosing the incorrect query_id does not raise an error, but
+	    yields exactly zero results """
+	
+	try:
+		query = json.loads(s)
+	except ValueError:
+		return False
+	
+	if not 'data' in query:
+		return False
+	else:
+		if 'location' in query['data']:
+			pass
+		return True
+
+
+def graphql(obj,query_ids=None):
 	""" access to /graphq/query/ """
-	assert type(obj) is dict, "fetch.graphql: obj must be a dict"
-	if query_id is None:
+	if not type(obj) is dict:
+		raise TypeError("Expecting dict type variable")
+	if type(query_ids) is list:
+		query_ids="\n".join(query_ids)
+	if query_ids is None:
 		f=open("query_id",'r')
-		query_id=f.read()
+		query_ids=f.read()
 		f.close()
+	
+	
 	args = urllib.urlencode(obj)
 	#data = fetch("/graphql/query/?"+args)
 	return args

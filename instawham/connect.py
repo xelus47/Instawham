@@ -5,8 +5,12 @@ import output # .py
 sys.dont_write_bytecode = True
 
 def connect(path="/",host="localhost",user_agent=None,method="GET"):
+	# make HTTPS connection to specified host and path with method
 	resp = get_response(path,host,user_agent,method)
+	# throw assertion error if not OK
 	assert resp.status==200, "%s %s @ %s%s"%(resp.status,resp.reason,host,path)
+	# return body
+	# if you need the headers too, use get_response in code or -t option in terminal
 	return resp.read()
 
 def closesock(sock,timeout=1):
