@@ -21,7 +21,7 @@ TBA
 | --------- | --- | ------- | 
 | home | `/` | www.instagram.com |
 | user | `/[username]/` | www.instagram.com/istaypuffed/ |
-| post | `/p/[short_code]/`| www.isntagram.com/p/BV0Jn0nFWpX/ |
+| post | `/p/[short_code]/`| www.instagram.com/p/BV0Jn0nFWpX/ |
 | hashtag | `/explore/tags/[hashtag]/`| www.instagram.com/explore/tags/drugs/ |
 | location | `/explore/locations/[id]/([location]/)`| www.instagram.com/explore/locations/44961364/ |
 
