@@ -6,6 +6,7 @@ sys.dont_write_bytecode = True
 
 
 def fetch(path="/"):
+	""" -> str or dict """
 	resp = wham_connect.get_response(path=path,host='www.instagram.com')
 	assert resp.status==200, "%s %s @ %s%s"%(resp.status,resp.reason,'www.instagram.com',path)
 	content_type = resp.getheader("content-type")
@@ -53,6 +54,7 @@ def graphql(obj,query_ids=None):
 	return args
 
 def main(url=None):
+	""" -> none """
 	if not sys.stdin.isatty() and url is None:
 		for line in sys.stdin.readlines():
 			line = line.replace("\n", "")

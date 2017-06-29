@@ -77,7 +77,7 @@ def main(url=None):
 			output.out(data)
 			return 0
 		except AssertionError as e:
-			output.out(e)
+			output.err_out(e)
 			return 1
 	else:
 		resp = get_response(path = args.path, host = args.host, method=method)
