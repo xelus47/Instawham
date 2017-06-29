@@ -10,7 +10,7 @@ An informal Instagram API
  Instawham/ $ source source.sh
 ```
 
-## Examples
+## Usage
 TBA
 
 ## Explanation
